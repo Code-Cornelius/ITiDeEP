@@ -1,0 +1,59 @@
+{
+  "quick_config": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "test_config": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "test_config_multidim": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "multidim_mountain": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "config_jump": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "config_sin": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "MSE": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  },
+  "flat_config": {
+    "type_analysis": "optimal",
+    "number_of_breakpoints": 1,
+    "model": "l2",
+    "min_size": 5,
+    "width": 5
+  }
+}
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+##### script to run locally MSE. Very long, better to use Euler.
+
+# set -eux -o pipefail
+# run with ./mse/quick_script_temp_MSE
+
+refinement_nb=1
+for i in {1..40}; do
+    for j in {1..10}; do
+        echo "line:" "$i" " time:" "$j"
+        python3 ./mse/estimation_MSE.py "$i" "$j" $refinement_nb
+    done
+done

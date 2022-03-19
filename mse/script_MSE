@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# run with :  ./mse/script_MSE
+# results in build directory that lies in root.
+
+#set -eux
+#set -o pipefail
+
+
+# use this script by estimating nb_estim * nb_tmax * time_estimations,
+# and redoing it and changing the refinement_number, increasing it by 1 every time.
+nb_estim=100
+nb_tmax=10
+name_config="MSE"
+refinement_number=2
+time="15:00" # HH:MM
+
+
+nb_of_rqst_cores=1
+name="itdep"
+memory="rusage[mem=4096]"
+flag_output1="./build/RPRT_"$name"_1"
+flag_error1="./build/RPRT_ERR_"$name"_1"
+
+flag_output2="./build/RPRT_"$name"_2"
+flag_error2="./build/RPRT_ERR_"$name"_2"
+
+
+for ((t_max=1; t_max<="$nb_tmax";t_max++)); do
+  # submit the array of jobs:
+  JOBIDfirst=$(bsub -n "$nb_of_rqst_cores" \
+    -J ""$name""$t_max"[1-"$nb_estim"]%100" \
+    -W "$time" \
+    -R "$memory" \
+    -oo "$flag_error1" \
+    -eo "$flag_output1" \
+    "python3 ./mse/estimation_MSE.py \$LSB_JOBINDEX" "$t_max" "$refinement_number" | awk '/is submitted/{print substr($2, 2, length($2)-2);}')
+  # submits job and extracts job ID for job chaining below
+done
+
+# wait for above job to be completed and then sends an email.
+bsub -w "numdone($JOBIDfirst,*)" -N  -oo "./build/RPRT_done" -eo "./build/RPRT_ERR_done" -J "COMPLETE_HITDEP" "echo "42""

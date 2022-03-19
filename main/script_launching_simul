@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# run with :  ./main/script_launching_simul
+# results in build directory that lies in root.
+
+#set -eux
+#set -o pipefail
+
+number_configs=150
+name_config="config_jump" # config_sin, config_jump, multidim_mountain
+time="6:00" # HH:MM
+
+
+nb_of_rqst_cores=1
+name="simul_hitdep"
+memory="rusage[mem=1024]"
+flag_output1="./build/RPRT_"$name"_1"
+flag_error1="./build/RPRT_ERR_"$name"_1"
+
+flag_output2="./build/RPRT_"$name"_2"
+flag_error2="./build/RPRT_ERR_"$name"_2"
+
+
+# submit the array of jobs:
+JOBIDfirst=$(bsub -n "$nb_of_rqst_cores" \
+  -J ""$name"[1-"$number_configs"]%100" \
+  -W "$time" \
+  -R "$memory" \
+  -oo "$flag_error1" \
+  -eo "$flag_output1" \
+  "python3 ./main/estimation1_hitdep.py \$LSB_JOBINDEX" "$name_config" | awk '/is submitted/{print substr($2, 2, length($2)-2);}')
+# submits job and extracts job ID for job chaining below
+
+# wait for above job to be completed and then sends an email.
+#bsub -w "numdone($JOBIDfirst,*)" -N  -oo "./build/RPRT_done" -eo "./build/RPRT_ERR_done" -J "First estimation HITDEP." "echo "42""
+
+
+# Then, we do gathering for all data
+bsub  -w "numdone($JOBIDfirst,*)"  -J "job_gathering1" \
+            -oo "./build/RPRT_ERR_gather_1" \
+            -eo "./build/RPRT_gather_1" \
+            "python3 ./main/gather_results.py '$name_config' 1"
+
+# Then, estimation of second step. # submit the array of jobs:
+JOBIDsecond=$(bsub -n "$nb_of_rqst_cores" \
+  -J ""$name"[1-"$number_configs"]%100" \
+  -W "$time" \
+  -R "$memory" \
+  -oo "$flag_error2" \
+  -eo "$flag_output2" \
+  "python3 ./main/estimation2_hitdep.py \$LSB_JOBINDEX" "$name_config" | awk '/is submitted/{print substr($2, 2, length($2)-2);}')
+
+
+# Then, we do gathering for all data
+bsub  -w "numdone($JOBIDsecond,*)"  -J "job_gathering2" \
+            -oo "./build/RPRT_ERR_gather_2" \
+            -eo "./build/RPRT_gather_2" \
+            "python3 ./main/gather_results.py '$name_config' 2"
+
+# wait for above job to be completed and then sends an email.
+bsub -w "numdone($JOBIDsecond,*)" -N  \
+      -oo "./build/RPRT_done" \
+      -eo "./build/RPRT_ERR_done" \
+      -J "COMPLETE_HITDEP" "echo "42""

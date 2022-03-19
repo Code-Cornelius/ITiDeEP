@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# run with: ./run_simulations/multithread_script
+#set -eux
+
+TOTAL_NB=100
+BATCH=7 # always lower than TOTAL_NB
+
+# batches induce a bit of overhead, but what matters is that all data fits inside the RAM.
+# Then, the CPU can run at 100% all the time.
+
+# print current time
+now=$(date)
+echo "Start application: " ${now}
+i=1
+
+# while we have not covered all cases
+while [ ${i} -le ${TOTAL_NB} ]; do
+  j=1 # the intra batch index
+  # submit jobs of the batch
+  while [ ${j} -le ${BATCH} ] && [ ${i} -le ${TOTAL_NB} ]; do
+    python3 run_simulations/2estim_hawkes_terminal.py ${i} &
+    sleep 1 # wait for a second ofr the process to be launched
+    ((j += 1))
+    ((i += 1))
+    pids[${j}]=$!
+  done
+  echo "Launched all estimations up to number" $((i - 1)) " out of " ${TOTAL_NB}.
+  # for all the jobs from current batch, wait for them.
+  for pid in "${pids[@]}"; do # might go over the job of the previous batch (if total_nb not divisible by batch).
+    # but it is not an issue bc job already completed.
+    wait ${pid}
+  done
+done
+
+now=$(date)
+echo "All subroutines complete at time" ${now}

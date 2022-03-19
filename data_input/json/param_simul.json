@@ -1,0 +1,92 @@
+{
+  "quick_config": {
+    "seed": 42,
+    "function": 1,
+    "kernel_div": 2,
+    "nb_diff_time_estim": 5,
+    "nb_simul": 2,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 4000,
+    "nb points tt": 1E6
+  },
+  "test_config": {
+    "seed": 42,
+    "function": 3,
+    "kernel_div": 2,
+    "nb_diff_time_estim": 5,
+    "nb_simul": 5,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 5000,
+    "nb points tt": 1E6
+  },
+  "test_config_multidim": {
+    "seed": 42,
+    "function": 3,
+    "kernel_div": 2,
+    "nb_diff_time_estim": 3,
+    "nb_simul": 5,
+    "dim": 2,
+    "styl": 1,
+    "Tmax": 15000,
+    "nb points tt": 1E6
+  },
+
+  "multidim_mountain": {
+    "seed": 42,
+    "function": 3,
+    "kernel_div": 3,
+    "nb_diff_time_estim": 30,
+    "nb_simul": 150,
+    "dim": 2,
+    "styl": 1,
+    "Tmax": 20000,
+    "nb points tt": 1E6
+  },
+  "config_jump": {
+    "seed": 42,
+    "function": 22,
+    "kernel_div": 3,
+    "nb_diff_time_estim": 40,
+    "nb_simul": 150,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 12000,
+    "nb points tt": 1E6
+  },
+  "config_sin": {
+    "seed": 42,
+    "function": 41,
+    "kernel_div": 4,
+    "nb_diff_time_estim": 40,
+    "nb_simul": 150,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 15000,
+    "nb points tt": 1E6
+  },
+  "MSE": {
+    "seed": 42,
+    "function": 41,
+    "kernel_div": 2.5,
+    "nb_diff_time_estim": 20,
+    "nb_simul": 100,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 0,
+    "nb points tt": 1E6
+  },
+  "flat_config": {
+    "seed": 42,
+    "function": 0,
+    "kernel_div": 1,
+    "nb_diff_time_estim": 5,
+    "nb_simul": 100,
+    "dim": 1,
+    "styl": 1,
+    "Tmax": 8000,
+    "nb points tt": 1E6
+  }
+}
+

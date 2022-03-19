@@ -1,0 +1,91 @@
+{
+  "quick_config": {
+    "L": 0.04,
+    "R": 0.90,
+    "h": 2.5,
+    "l": 0.9,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": true
+  },
+
+  "test_config": {
+    "L": 0.04,
+    "R": 0.90,
+    "h": 2.5,
+    "l": 0.9,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": true
+  },
+  "test_config_multidim": {
+    "L": 0.04,
+    "R": 0.90,
+    "h": 2.5,
+    "l": 0.9,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": true
+  },
+  "multidim_mountain": {
+    "L": 0.1,
+    "R": 0.95,
+    "h": 3,
+    "l": 0.7,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": false
+  },
+  "config_jump": {
+    "L": 0.13,
+    "R": 0.98,
+    "h": 3.0,
+    "l": 0.7,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": false
+  },
+  "config_sin": {
+    "L": 0.04,
+    "R": 0.90,
+    "h": 3.0,
+    "l": 0.9,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": false
+  },
+  "MSE": {
+    "L": 0.04,
+    "R": 0.90,
+    "h": 2.5,
+    "l": 1.0,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": false
+  },
+  "flat_config": {
+    "L": 0.08,
+    "R": 0.90,
+    "h": 2.5,
+    "l": 1.0,
+    "considered_parameters": [
+      "nu",
+      "alpha"
+    ],
+    "all_kernels_drawn": false
+  }
+}
