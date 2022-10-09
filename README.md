@@ -1,14 +1,16 @@
 # Hawkes ItiDeEP
 
-Repository for the paper Hawkes Iterative Time-Dependent Estimation of Parameters.
+Repository for the paper Hawkes Iterative Time-Dependent Estimation of Parameters. 
+The paper is for now a preprint but might eventually get published. 
 
 For citations in biblatex:
 
-    @article{KotlarekItideep, 
-            author = "Kotlarek, Niels", 
-            title = "Hawkes Iterative Time Dependent Estimation of Parameterss",
-            year = "2022", 
-            month = 4 }
+@article{KotlarekItideep, 
+        author = "Kotlarek, Niels D. C.", 
+        title = "Hawkes Iterative Time Dependent Estimation of Parameters",
+        year = "2022", 
+        month = 4,
+	publisher = "ETH Zurich Working Paper Preprint"}
 
 ### 1. Content of Repository:
 
