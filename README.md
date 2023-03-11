@@ -10,7 +10,8 @@ For citations in biblatex:
 		title = "Hawkes Iterative Time Dependent Estimation of Parameters",
 		year = "2022", 
 		month = 4,
-		publisher = "ETH Zurich Working Paper Preprint"}
+		publisher = "ETH Zurich Working Paper Preprint",
+		url = "https://github.com/Code-Cornelius/ITiDeEP"}
 
 ### 1. Content of Repository:
 
