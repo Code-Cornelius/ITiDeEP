@@ -5,8 +5,8 @@ The paper is for now a preprint but might eventually get published.
 
 For citations in biblatex:
 
-	@article{KotlarekItideep, 
-		author = "Kotlarek, Niels D. C.", 
+	@article{CarKotItideep, 
+		author = "Cariou-Kotlarek, Niels", 
 		title = "Hawkes Iterative Time Dependent Estimation of Parameters",
 		year = "2022", 
 		month = 4,
